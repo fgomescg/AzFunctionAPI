@@ -14,10 +14,10 @@ namespace FGomes.Function
     {
         [FunctionName("ProductGet")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("C# HTTP trigger function processed a request. Monique meu amor da minha vida");
 
             string name = req.Query["name"];
 
