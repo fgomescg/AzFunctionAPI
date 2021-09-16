@@ -28,5 +28,17 @@ namespace FGomes.Function {
       products.Add(newProduct);
       return newProduct;
     }
+
+    public static void DeleteProduct(Product product) 
+    {
+      products.Remove(product);
+    }
+
+    public static void UpdateProduct(int id, string name)
+    {
+      var product = products.FirstOrDefault(d => d.Id == id);
+      if (product != null) { product.Name = name; }
+    }
+
   } 
 }
