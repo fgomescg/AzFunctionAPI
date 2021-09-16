@@ -34,10 +34,9 @@ namespace FGomes.Function
                     product = product
                 });
                 return (ActionResult)new OkObjectResult(json);
-            } 
-            else {
-                return new BadRequestObjectResult("Missing name in posted Body");
             }
+            
+            return new BadRequestObjectResult("Missing name in posted Body");            
         }
     }
 }
