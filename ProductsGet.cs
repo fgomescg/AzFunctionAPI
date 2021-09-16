@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -10,22 +8,20 @@ using Newtonsoft.Json;
 
 namespace FGomes.Function
 {
-    public static class ProductGet
+    public static class ProductsGet
     {
-        [FunctionName("ProductGet")]
+        [FunctionName("ProductsGet")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ProductsGet/{id:int}")] HttpRequest req,
-            int id,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            var product = Db.GetProductById(id);
-            var json = JsonConvert.SerializeObject(new {
-                product = product
+            var json = JsonConvert.SerializeObject(new{
+                products = Db.GetProducts()
             });
 
-            return (ActionResult) new OkObjectResult(json);
+            return (ActionResult)new OkObjectResult(json);
         }
     }
 }
